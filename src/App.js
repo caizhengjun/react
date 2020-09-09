@@ -1,19 +1,32 @@
 import React from "react";
 import JSXDemo from "./components/JSXDemo";
+import SetStateDemo from "./components/setstate/SetStateDemo";
+import IfDemo from "./components/ifdemo/IfDemo";
 
-export default class App extends React.Component {
+class App extends React.Component {
     constructor(props) {
         super(props);
-        this.state={
-            name:'caizhegnjun'
+        this.state = {
+            name: 'caizhegnjun'
         }
+    }
+
+    changeName = (data) => {
+        this.setState({
+            name: data
+        })
     }
 
     render() {
         return (
             <div>
-                <JSXDemo/>
+                <h3>{this.state.name}</h3>
+                <JSXDemo name={this.state.name} changeName={this.changeName}/>
+                <SetStateDemo/>
+                <IfDemo/>
             </div>
         )
     }
 }
+
+export default App

@@ -1,6 +1,7 @@
 import React from "react";
+import NavBar from "./tabbar/NavBar";
 
-export default class JSXDemo extends React.Component {
+class JSXDemo extends React.Component {
 
     constructor(props) {
         super(props);
@@ -21,22 +22,29 @@ export default class JSXDemo extends React.Component {
         this.setState({
             time: new Date().toLocaleTimeString()
         })
-    }
+    };
+
+    changeName = () => {
+        this.props.changeName("我是儿子的数据！");
+    };
 
     render() {
-
+        const nav1 = ["首页", "搜索", "购物车"];
+        const nav2 = ["Java", "Hadoop", "Spark"];
         const element = (
             <div>
-                <h1>Hello,Timer</h1>
-                <h2>It is {this.state.time}</h2>
+                <button onClick={this.changeName}>修改</button>
+                <h2>北京时间 {this.state.time}</h2>
+                <NavBar nav={nav1} title={"路径导航"}/>
+                <NavBar nav={nav2} title={"学习导航"}/>
             </div>
-        )
-
+        );
         return (
             <div>
                 {element}
             </div>
         )
     }
-
 }
+
+export default JSXDemo
